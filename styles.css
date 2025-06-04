@@ -1,0 +1,1042 @@
+@import url('https://fonts.googleapis.com/css2?family=Joti+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Silkscreen:wght@400;700&display=swap');
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Poppins;
+    color: #1E1E1E;
+    background-color: #CDCDCD;
+    background-image: url(images/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #067330;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    white-space: nowrap;
+}
+
+.logo {
+    font-family: "Joti One";
+    font-size: 4.5em;
+    color: #fff;
+    user-select: none;
+    transition: font-size 0.4s ease, transform 0.4s ease;
+    margin-right: 50px;
+}
+
+.hero {
+    color: #fff;
+    position: absolute;
+    top: 150px;
+    left: 60px;
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+    padding: 20px;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 2em;
+    position: absolute;
+    right: 30px;
+    top: 25%;
+}
+
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+    }
+
+    .navbar.active {
+        display: flex;
+        right: 20px;
+        top: 70px;
+
+    }
+
+    .navbar a {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logo {
+        font-size: 1.8em;
+    }
+    
+    @media (max-width: 600px) {
+        .logo {
+            font-size: 1.5em;
+            transform: none;
+        }
+    }
+}
+
+.navbar a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.redes-sociais {
+    display: none; 
+}
+
+.banner{
+    margin-top: -50px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .product {
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1000;
+    transition: 0.7s;
+    --left: 0px;
+    display: flex;
+}
+
+.banner .product .soda{
+    background:
+        var(--url) var(--left) 0,
+        url(images/mockup.png);
+    background-size: auto 100%;
+    width: 250px;
+    aspect-ratio: 2 / 4;
+    background-blend-mode: multiply;
+    mask-image: url(images/mockup.png);
+    mask-size: auto 100%;
+    transition: 0.7s;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1000;
+}
+
+.banner .product:hover{
+    --left: 1000px;
+    transform: translateX(-50%) translateY(-120px);
+    z-index: 1000;
+}
+
+.product{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 170px;
+    z-index: 2;
+    width: 500px;
+    transition: 0.7s;
+    z-index: 1000;
+}
+
+.product .soda{
+    position: absolute;
+    bottom: 0;
+    left: calc(50%);
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.soda{
+    --left: 0px;
+    background: 
+        var(--url) var(--left),
+        url(images/mockup.png) 0 0;
+    background-size: auto 100%;
+    width: 280px;
+    aspect-ratio: 2 / 4;
+    background-blend-mode: multiply;
+    transition: 0.8s;
+    mask-image: url(images/mockup.png);
+    mask-size: auto 100%;
+    z-index: 1000;
+}
+
+.soda:nth-child(2){
+    opacity: 0;
+    z-index: 1000;
+}
+
+.product:hover{
+    bottom: 100px;
+    z-index: 1000;
+}
+
+.product:hover .soda:nth-child(2){
+    opacity: 1;
+    --left: 520px;
+    z-index: 1000;
+}
+
+.product:hover .soda:nth-child(1){
+    opacity: 0;
+    --left: 500px;
+    z-index: 1000;
+}
+
+.banner .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.banner .clouds img {
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    animation: animate calc(8s * var(--i)) linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: translateX(-100%);
+    }
+    100%
+    {
+        transform: translateX(100%);
+    }
+}
+
+.white-section {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    text-align: center;
+    padding-bottom: 200px;
+    padding-top: 150px;
+
+}
+
+.white-section h1 {
+    margin: 0;
+    font-family: "Joti One", sans-serif;
+    font-size: 50px;
+    padding: 0 20px;
+}
+
+.white-section p {
+    text-align: left;
+    margin-top: 20px;
+    width: 60%;
+    margin-bottom: 40px;
+}
+
+.section-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-left: -500px; 
+}
+
+.lata1 {
+    position: relative;
+    width: 15%;
+    height: auto;
+    margin-top: 40px;
+    left: -150px;
+}
+
+.text-left {
+    text-align: left;
+    width: 60%;
+    margin-left: -40px;
+}
+
+.dollynha1-img {
+    width: 700px;
+    height: auto;
+    transform: rotate(90deg);
+    margin-top: 250px;
+    margin-left: 15px;
+}
+
+
+#historia {
+    background-color: #067354;
+    text-align: center;
+}
+
+#historia h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-family: 'Joti One';
+}
+
+#historia p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.linha-do-tempo {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.8rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.linha-do-tempo .evento {
+    position: relative;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 10px 0;
+    color: #333;
+    width: 80%;
+    max-width: 400px;
+    min-height: 120px;
+    height: 180px;
+    margin-left: -500px;
+    border-radius: 15px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.linha-do-tempo h2 {
+    font-size: 25px;
+    font-family: 'Joti One';
+}
+
+.linha-do-tempo .evento p {
+    color: #333;
+    margin-top: 5px;
+    padding-right: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    line-height: 1.2;
+    flex-grow: 1;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+.linha-do-tempo img {
+    position: absolute;
+    right: 300px;
+    width: 500px;
+    height: auto;
+}
+
+#redesign {
+    background-color: #fff;
+    text-align: center;
+}
+
+#redesign .conteudo-redesign {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: -200px;
+}
+
+#redesign .conteudo-redesign .item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+}
+
+#redesign .conteudo-redesign .item img {
+    width: 100%;
+    height: auto;
+    margin-left: -200px;
+}
+
+.dollynha2-img {
+    position: relative;
+    width: 1000px;  
+    height: 100px;
+    transform: rotate(270deg);
+    left: 445px;
+}
+
+#redesign .conteudo-redesign .item h3 {
+    font-size: 22px;
+    margin: 15px 0;
+    font-family: 'Joti One';
+}
+
+#redesign .conteudo-redesign .item p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.5;
+    width: 150%;
+}
+
+#produto {
+    background-color: #fff;
+    padding: 3rem 0 2rem;
+}
+
+#produto h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Joti One';
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+#produto p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.ice {
+    margin-top: -510px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    margin-bottom: -150px;
+}
+
+.iceleft {
+    background: url(images/iceleft.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 100%;
+}
+
+.iceright {
+    background: url(images/iceright.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 100%;
+}
+
+.ices {
+    position: absolute;
+    background: url(images/2ices.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 50%;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 20vh;
+    overflow: hidden;
+    margin-top: -320px;
+}
+
+.waves .wave {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: url(images/wave.png);
+    background-size: 1000px 100px;
+}
+
+.waves .wave1 {
+    animation: animate1 15s linear infinite;
+    animation-delay: -5s;
+    bottom: 0;
+    opacity: 1;
+}
+
+.waves .wave2 {
+    animation: animate2 5s linear infinite;
+    animation-delay: 0s;
+    bottom: 15px;
+    opacity: 0.5;
+}
+
+.waves .wave3 {
+    animation: animate1 15s linear infinite;
+    animation-delay: -2s;
+    bottom: 10px;
+    opacity: 0.3;
+}
+
+.waves .wave4 {
+    animation: animate2 5s linear infinite;
+    animation-delay: -5s;
+    bottom: 0;
+    opacity: 0.8;
+}
+
+.wavesdown .wavedown {
+    position: absolute;
+    left: 0;
+    top: 100;
+    width: 100%;
+    height: 100px;
+    background: url(images/wavedown.png);
+    background-size: 1000px 100px;
+}
+
+.wavesdown .wave5 {
+    animation: animate1 15s linear infinite;
+    animation-delay: -5s;
+    top: 100;
+    opacity: 1;
+}
+
+.wavesdown .wave6 {
+    animation: animate2 5s linear infinite;
+    animation-delay: 0s;
+    top: 100;
+    opacity: 0.5;
+}
+
+.wavesdown .wave7 {
+    animation: animate1 15s linear infinite;
+    animation-delay: -2s;
+    top: 100;
+    opacity: 0.3;
+}
+
+.wavesdown .wave8 {
+    animation: animate2 5s linear infinite;
+    animation-delay: -5s;
+    top: 100;
+    opacity: 0.8;
+}
+
+@keyframes animate1
+{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1000px;
+    }
+}
+
+@keyframes animate2
+{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1000px;
+    }
+}
+
+#sustentabilidade {
+    background-color: #fff;
+    padding-bottom: 30px;
+    padding: 15rem 0;
+}
+
+#sustentabilidade h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Joti One';
+    font-size: 40px;
+}
+
+#sustentabilidade p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 45px;
+    font-size: 20px;
+}
+
+.galeria-produto {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.galeria-produto img {
+    width: 350px;
+    height: 350px;
+    border: 3px solid #fff;
+    margin-bottom: 100px;
+    max-width: 100%;
+}
+
+.sustentabilidade-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.sustentabilidade-info .item {
+    flex: 0 1 calc(40%);
+    text-align: center;
+    margin: 10px;
+}
+
+.sustentabilidade-info i {
+    font-size: 3rem;
+    color: #067354;
+    margin-bottom: 10px;
+}
+
+.sustentabilidade-info p {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.rock{
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.rock img:nth-child(1){
+    position: absolute;
+    height: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    transition: 0.7s;
+    z-index: 1;
+    max-width: 100%;
+}
+
+.rock img:nth-child(2){
+    position: absolute;
+    height:70%;
+    left: 0;
+    bottom: 0;
+    transition: 0.7s;
+    max-width: 100%;
+}
+
+.rock img:nth-child(3){
+    position: absolute;
+    height: 100%;
+    right: 0;
+    bottom: -100px;
+    rotate: -25deg;
+    transition: 0.7s;
+    max-width: 100%;
+}
+
+.banner:has(.product:hover) .rock img:nth-child(1){
+    transform: translateX(-50%) translateY(50px);
+}
+
+.banner:has(.product:hover) .rock img:nth-child(2){
+    transform: translateX(-100px) translateY(100px);
+}
+
+.banner:has(.product:hover) .rock img:nth-child(3){
+    transform: translateX(100px) translateY(100px);
+}
+
+@media (max-width: 1200px) {
+    .logo {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5em;
+    }
+
+    .hero {
+        top: 100px;
+        left: 20px;
+        width: 80vw;
+        height: auto;
+    }
+
+    .section-content img {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .sustentabilidade-info .item {
+        flex: 1 1 calc(100%);
+    }
+}
+
+@media (max-width: 480px) {
+    .banner .product {
+        width: 90%;
+    }
+
+    #produto h1, #produto p {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 885px) {
+    .section-content {
+        flex-direction: column; 
+        align-items: center;
+        margin: 0;
+    }
+
+    .section-content img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar a {
+        margin: 5px 0;
+    }
+
+        .redes-sociais {
+        display: block;
+    }
+}
+
+@media (min-width: 886px) {
+    .section-content {
+        flex-direction: row;
+    }
+
+    .navbar {
+        justify-content: space-around;
+    }
+
+    .navbar a {
+        margin: 0 10px;
+    }
+}
+
+#sobrenos {
+    background: #fff;
+    padding: 30px 0;
+    padding-bottom: 100px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sobrenos h1 {
+    margin-bottom: 20px;
+}
+
+#sobrenos p {
+    margin-bottom: 30px;
+    width: 80%;
+}
+
+.equipe {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.membro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.membro h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.membro p {
+    font-size: 1rem;
+    color: #000;
+}
+
+.membro img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.membro .informacoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.header2 {
+    background-color: #000;
+}
+
+#promocao {
+    background-color: #067354;
+    padding: 50px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+#promocao h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-family: 'Joti One', sans-serif;
+}
+
+#promocao p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.como-funciona {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.como-funciona h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Joti One';
+}
+
+.conteudo-como-funciona {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.imagem-iphone {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #fff;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+#promocao .formulario {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#promocao .formulario h2 {
+    font-family: 'Joti One', sans-serif;
+    font-size: 28px;
+    color: #067354;
+    margin-bottom: 20px;
+}
+
+#promocao .formulario label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#promocao .formulario input, 
+#promocao .formulario select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#promocao .formulario input:focus, 
+#promocao .formulario select:focus {
+    border-color: #067354;
+    outline: none;
+}
+
+#promocao .formulario button {
+    background-color: #067354;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#promocao .formulario button:hover {
+    background-color: #055d42;
+}
+
+#promocao .formulario p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+
+footer {
+    background-color: #067354;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Joti One';
+}
+
+.footer-socials {
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+    color: #d1d1d1;
+}
+
+footer p {
+    font-size: 14px;
+}
